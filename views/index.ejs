@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>cari</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/jv.js"></script>
   </head>
   <body>
-    <div class="wrapper">
+      <script>
+          moment().format();
+      </script>
+    <div class="wrapper" id="boardForm">
       <form action="/" method="post" class="board-form">
-        タイトル: <input type="text" name="title" class="input" required><br>
-        メッセージ: <input type="text" name="message" class="input" required><br>
+        タイトル: <input type="text" name="title" class="input" v-model="title" required>{{title}}<br>
+        メッセージ: <input type="text" name="message" class="input" v-model="message" required>{{message}}<br>
         <br>
         <button type="submit" class="submit">ボード作成</button>
       </form>
+      <div>
+        <ul class="main-list">
+          <% docs.forEach(function(item){ %>
+            <li class="main-list_item">
+              <div class="board">
+                <p class="board-title"><%= item.title %></p>
+                <p class="board-message"><%= item.date %></p>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
     </div>
+    <script>
+    var vm = new Vue({
+      el: "#boardForm",
+      data: 
+      {
+        title:"",
+        message:"",
+      },
+    });
+    </script>
   </body>
 </html>
