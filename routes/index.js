@@ -27,6 +27,7 @@ router.post('/', function(req, res, next) {
   console.log(body);
   cari.save(function (err) {
     if(err) console.log(err);
+    res.end();
   })
 });
 
