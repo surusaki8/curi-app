@@ -10,7 +10,9 @@
   mogamoga
   <div class="wrapper">
     <p class="main-title"><%= docs.title %></p>
-    <p class="main-title"><%= docs.message[0] %></p>
+    <% for(var i = 0; i <= docs.message.length; i++){ %> 
+    <p class="main-title"><%= docs.message[i] %></p>
+    <% } %>
   </div>
   <div>
     <form action="/moga/<%= docs._id %>" method="post" class="board-form">
