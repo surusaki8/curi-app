@@ -46,18 +46,17 @@ router.post('/moga/:_id', function(req, res, next) {
   var _id = req.params._id;
   console.log(_id);
   try{
-    Cari.update({'_id': _id}).push({message: req.body.message}).exec( function(err,result) {
-      if(!err) {
-        res.redirect('/moga/' + _id);
-      } else {
-        console.log(err.message);
-      }
+  Cari.updateOne({"_id": _id},{"$push":{message: req.body.message}},function(err,result) {
+    if(!err) {
+      return res.redirect('/moga/' + _id);
+    } else {
+      console.log(err.messe);
     }
-    );
-  } catch (error) {
-    console.log(error.message);
-  }
-  });
+  })
+} catch {
+
+}
+});
 
 
 module.exports = router;

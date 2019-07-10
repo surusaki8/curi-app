@@ -3,15 +3,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var cariSchema = new Schema({
   title: String,
-  message: [
-    {
-    type: String,
-    date: {
-      type: Date,
-      default: Date.now,
-    }
-    }
-  ],
+  message: 
+  { 
+    type: Array, 
+    default: "",
+  },
   date: 
   {
     type: Date,
