@@ -14,7 +14,6 @@
       <form action="/" method="post" class="board-form">
         タイトル: <input type="text" name="title" class="input" v-model="title" required>{{title}}<br>
         メッセージ: <input type="text" name="message" class="input" v-model="message" required>{{message}}<br>
-        <br>
         <button type="submit" class="submit">ボード作成</button>
       </form>
       <div>
@@ -22,8 +21,9 @@
           <% docs.forEach(function(item){ %>
             <li class="main-list_item">
               <div class="board">
-                <p class="board-title"><%= item.title %></p>
-                <p class="board-message"><%= item.date %></p>
+                <p class="board-title">タイトル：<%= item.title %></p>
+                <p class="board-message">作成日時：<%= item.date %></p>
+                <p><a href="/moga/<%= item._id %>">詳細</a></p>
               </div>
             </li>
           <% }) %>

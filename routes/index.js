@@ -26,4 +26,38 @@ router.post('/', function(req, res, next) {
   })
 });
 
+router.get('/boards/:_id', function(req, res, next) {
+  Cari.findOne({_id: req.params._id},function(err,docs) {
+    //res.render('list',{'arrayForm': docs});
+    console.log(docs);
+    res.render('boards', {'board': docs});
+  });
+});
+
+router.get('/moga/:_id', function(req, res, next) {
+  Cari.findOne({_id: req.params._id},function(err,docs) {
+    console.log(docs);
+    res.render('moga', {'docs': docs});
+  });
+});
+
+router.post('/moga/:_id', function(req, res, next) {
+  console.log(req.body.message);
+  var _id = req.params._id;
+  console.log(_id);
+  try{
+    Cari.update({'_id': _id}).push({message: req.body.message}).exec( function(err,result) {
+      if(!err) {
+        res.redirect('/moga/' + _id);
+      } else {
+        console.log(err.message);
+      }
+    }
+    );
+  } catch (error) {
+    console.log(error.message);
+  }
+  });
+
+
 module.exports = router;

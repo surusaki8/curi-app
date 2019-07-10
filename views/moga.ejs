@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  mogamoga
+  <div class="wrapper">
+    <p class="main-title"><%= docs.title %></p>
+    <p class="main-title"><%= docs.message %></p>
+  </div>
+  <div>
+    <form action="/moga/<%= docs._id %>" method="post" class="board-form">
+      <input type="text" name="message" class="input" required>
+      <button type="submit" class="submit">投稿</button>
+    </form>
+  </div>
+    <a href="/" class="btn">トップへもどる</a>
+</body>
+</html>
