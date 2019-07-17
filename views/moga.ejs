@@ -9,10 +9,13 @@
 <body>
   mogamoga
   <div class="wrapper">
-    <p class="main-title"><%= docs.title %></p>
-    <% for(var i = 0; i <= docs.message.length; i++){ %> 
-    <p class="main-title"><%= docs.message[i] %></p>
-    <% } %>
+    <p class="main-title">タイトル<br>「<%= docs.title %>」</p>
+    <p>コメント</p>
+    <ol>
+      <% for(var i = 0; i < docs.message.length; i++){ %> 
+        <li class="main-title"><%= docs.message[i] %></li>
+      <% } %>
+    </ol>
   </div>
   <div>
     <form action="/moga/<%= docs._id %>" method="post" class="board-form">
